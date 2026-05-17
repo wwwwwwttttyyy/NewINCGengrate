@@ -68,3 +68,29 @@ git push
 ```
 
 Do not commit generated output directories unless there is a specific reason.
+
+## One-Command Sync Scripts
+
+PowerShell on Windows:
+
+```powershell
+.\scripts\git_update.ps1
+# run experiments or edit code
+.\scripts\git_upload.ps1 -Message "describe the update"
+```
+
+WSL / bash:
+
+```bash
+bash scripts/git_update.sh
+# run experiments or edit code
+bash scripts/git_upload.sh "describe the update"
+```
+
+`git_update` fetches and rebases onto `origin/main` with `--autostash`.
+`git_upload` stages tracked and unignored changes, creates a commit if needed,
+rebases onto the latest `origin/main`, and pushes.
+
+The scripts do not force-push. If both machines changed the same tracked file,
+Git may stop for a conflict; resolve it manually, then continue with
+`git rebase --continue` and rerun the upload script.
