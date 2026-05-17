@@ -9,8 +9,10 @@
 /inc_ricci
 /inc_ricci_v[0-9]
 /inc_ricci_v[0-9][0-9]
+/inc_ricci_v[0-9][0-9][A-Za-z]
 /inc_ricci_v[0-9]_asan
 /inc_ricci_v[0-9][0-9]_asan
+/inc_ricci_v[0-9][0-9][A-Za-z]_asan
 
 # Generated run directories at repository root
 /angle_*/
@@ -74,6 +76,7 @@
 /topology_builder_summary.txt
 /voro_delaunay_summary.txt
 /voro_graph_summary.txt
+/v19A_report.md
 
 # Python/runtime cache
 __pycache__/
