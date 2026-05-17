@@ -89,3 +89,4 @@ Thumbs.db
 # Optional local scratch area
 /scratch/
 /local_runs/
+/local_outputs/
