@@ -1,0 +1,9 @@
+=== Environment ===
+date: Sun May 17 15:58:32 CST 2026
+pwd: /mnt/d/Codes/airesearch/NewINCGengrate
+conda env: analyse
+g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+/home/tianyu/miniconda3/envs/analyse/bin/voro++
+=== End Environment ===
+=== SECTION C: v18 Gamma Scan ===
+--- gamma=0 START Sun May 17 15:58:32 CST 2026 ---

@@ -1,0 +1,7 @@
+D_net: nan
+total_path_length: 0.00000000000000000e+00
+net_displacement: 0.00000000000000000e+00
+zigzag_index: nan
+sign_reversals_sum: 0
+sign_reversals_shape: 0
+interpretation: zig-zag / limit-cycle behavior

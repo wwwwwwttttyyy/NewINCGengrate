@@ -1,0 +1,14 @@
+=== Environment Info ===
+date: Sun May 17 16:11:13 CST 2026
+pwd: /mnt/d/Codes/airesearch/NewINCGengrate
+conda env: analyse
+g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+voro++ path: /home/tianyu/miniconda3/envs/analyse/bin/voro++
+
+=== File sizes ===
+-rwxrwxrwx 1 tianyu tianyu 1.3M May 15 20:21 /mnt/d/Codes/airesearch/NewINCGengrate/inc_ricci_v16
+-rwxrwxrwx 1 tianyu tianyu 1.5M May 15 21:38 /mnt/d/Codes/airesearch/NewINCGengrate/inc_ricci_v17
+-rwxrwxrwx 1 tianyu tianyu 1.6M May 15 23:48 /mnt/d/Codes/airesearch/NewINCGengrate/inc_ricci_v18
+-rwxrwxrwx 1 tianyu tianyu 446K May 15 20:21 /mnt/d/Codes/airesearch/NewINCGengrate/inc_ricci_v16.cpp
+-rwxrwxrwx 1 tianyu tianyu 500K May 15 21:37 /mnt/d/Codes/airesearch/NewINCGengrate/inc_ricci_v17.cpp
+-rwxrwxrwx 1 tianyu tianyu 546K May 15 23:47 /mnt/d/Codes/airesearch/NewINCGengrate/inc_ricci_v18.cpp

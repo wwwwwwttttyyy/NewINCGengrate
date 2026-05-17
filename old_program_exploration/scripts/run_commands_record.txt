@@ -1,0 +1,94 @@
+# Run Commands Record
+# Old Program Exploration - All executed commands
+# Date: 2026-05-17 | Runtime: ~33 min total (parallel on i7-13650HX)
+
+## Environment
+OS: Windows 11 + WSL (Ubuntu 22.04) | CPU: Intel i7-13650HX (6P+8E)
+Conda env: analyse | g++ 11.4.0 | voro++ from conda
+
+## A. Program Tests
+./inc_ricci_v17 --test    # ALL 5 TESTS PASSED
+./inc_ricci_v18 --test    # ALL 5 TESTS PASSED
+
+## C. v18 Gamma Scan (7 runs, 6 parallel)
+# Result: ALL 7 gamma → 0 accepted cycles, completely frozen. Runtime: ~2.5 min
+for gamma in 0 0.02 0.05 0.10 0.25 0.50 1.0; do
+  cd raw/v18_poly_gamma_${gamma}
+  ./inc_ricci_v18 --nx 16 --ny 16 --radius_seed 101 --target_dist lognormal
+    --target_delta 0.25 --target_radius_ratio 5 --coord_mode soft_relax
+    --target_phi 0.84 --relax_steps 20000 --use_voropp 1 --compute_nm_theta 1
+    --decompose_theta 1 --apply_to_polydisperse 1 --cycles 200
+    --shape_steps_per_cycle 50 --ricci_steps_per_cycle 50
+    --shape_gamma ${gamma} --bounded_du 0.10 --progress_every 50
+done
+
+## D. v18 Bounded_du Scan (5 runs, 5 parallel)
+# Result: bdu=0.03→88 acc, 0.05→72 acc, ≥0.10→0 acc frozen. Runtime: ~2 min
+for bdu in 0.03 0.05 0.15 0.25 0.40; do
+  cd raw/v18_poly_bound_${bdu}
+  ./inc_ricci_v18 --nx 16 --ny 16 --radius_seed 101 --target_dist lognormal
+    --target_delta 0.25 --target_radius_ratio 5 --coord_mode soft_relax
+    --target_phi 0.84 --relax_steps 20000 --use_voropp 1 --compute_nm_theta 1
+    --decompose_theta 1 --apply_to_polydisperse 1 --cycles 200
+    --shape_steps_per_cycle 20 --ricci_steps_per_cycle 100
+    --shape_gamma 0.05 --bounded_du ${bdu} --progress_every 50
+done
+
+## E. v18 Weight Scan (3 runs, 3 parallel)
+# Result: shape_biased/balanced→0 acc frozen, weak_overlap→186 acc diagonal_improved. Runtime: ~2 min
+# shape_biased: --w_sum 0.5 --w_shape 5.0 --w_U 0.5 --w_radius 5.0
+# balanced:     --w_sum 2.0 --w_shape 2.0 --w_U 1.0 --w_radius 5.0
+# weak_overlap: --w_sum 1.0 --w_shape 2.0 --w_U 0.05 --w_radius 5.0
+# (all with --shape_gamma 0.05 --bounded_du 0.15)
+
+## G. v17 Operator Atlas (2 runs, 2 parallel)
+# 16x16 basic 128 starts: 896 rows. Runtime: ~12 min
+./inc_ricci_v17 --nx 16 --ny 16 --seed 5000 --radius_seed 101
+  --same_radii_all_starts 1 --target_dist lognormal --target_delta 0.25
+  --target_radius_ratio 5 --coord_mode soft_relax --target_phi 0.84
+  --relax_steps 15000 --use_voropp 1 --compute_nm_theta 1 --decompose_theta 1
+  --operator_multistart 1 --operator_set basic --threads 20
+  --operator_multistart_count 128
+  --operator_multistart_out operator_multistart_v17_16_basic_more.csv
+
+# 24x24 basic 48 starts: 336 rows. Runtime: ~12 min
+./inc_ricci_v17 --nx 24 --ny 24 --seed 6000 --radius_seed 202
+  --same_radii_all_starts 1 --target_dist lognormal --target_delta 0.25
+  --target_radius_ratio 5 --coord_mode soft_relax --target_phi 0.84
+  --relax_steps 25000 --use_voropp 1 --compute_nm_theta 1 --decompose_theta 1
+  --operator_multistart 1 --operator_set basic --threads 20
+  --operator_multistart_count 48
+  --operator_multistart_out operator_multistart_v17_24_basic_more.csv
+
+## H. v17 Fine Compression Scan (1 run)
+# Best phi: NM→0.92, sum→0.90, shape→0.92, score(c=1)→0.84. Runtime: ~2 min
+./inc_ricci_v17 --nx 16 --ny 16 --radius_seed 101 --same_radii_all_starts 1
+  --target_dist lognormal --target_delta 0.25 --target_radius_ratio 5
+  --coord_mode soft_relax --relax_steps 20000 --use_voropp 1
+  --compute_nm_theta 1 --decompose_theta 1 --fine_compression_scan 1
+  --fine_phi_list 0.82,0.83,0.84,0.85,0.86,0.87,0.88,0.89,0.90,0.91,0.92
+  --fine_compression_seeds 1,2,3,4,5,6,7,8
+  --fine_compression_out fine_compression_v17_16_fine.csv
+
+## SECTION D: v18 Bounded_du Scan
+# bounded_du = 0.03, 0.05, 0.10, 0.15, 0.25, 0.40
+./inc_ricci_v18 --nx 16 --ny 16 --radius_seed 101 --target_dist lognormal --target_delta 0.25 --target_radius_ratio 5 --coord_mode soft_relax --target_phi 0.84 --relax_steps 20000 --use_voropp 1 --compute_nm_theta 1 --decompose_theta 1 --apply_to_polydisperse 1 --cycles 200 --shape_steps_per_cycle 20 --ricci_steps_per_cycle 100 --shape_gamma 0.05 --bounded_du ${bdu} --out old_program_exploration/raw/v18_poly_bound_${bdu} --progress_every 50
+
+## SECTION E: v18 Weight Scan
+# shape-biased: --w_sum 0.5 --w_shape 5.0 --w_u 0.5 --w_radius 5.0
+# balanced: --w_sum 2.0 --w_shape 2.0 --w_u 1.0 --w_radius 5.0
+# weak-overlap: --w_sum 1.0 --w_shape 2.0 --w_u 0.05 --w_radius 5.0
+# Base: --shape_gamma 0.05 --bounded_du 0.15
+
+## SECTION G: v17 Operator Atlas Extension
+# 16x16 basic: --operator_multistart_count 128 --threads 20
+# 24x24 basic: --operator_multistart_count 48 --threads 20
+
+## SECTION H: v17 Fine Compression Scan
+# phi: 0.82..0.92, seeds: 1..8
+
+## Parameter Compatibility Notes
+# v18 --help shows minimal output (references "v10")
+# Verified via grep: all key params exist in source
+# --w_u (lowercase, not --w_U)
+# --w_overlap exists separately

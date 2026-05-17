@@ -1,0 +1,92 @@
+bounded_ricci_du010
+  count: 128
+  mean_delta_sum: -1.80784475020884031e-02
+  median_delta_sum: -1.80823544222670600e-02
+  mean_delta_shape: -1.50207326721370866e-03
+  median_delta_shape: -1.50397527467217851e-03
+  success_left_fraction: 1.00000000000000000e+00
+  success_down_fraction: 1.00000000000000000e+00
+  success_diagonal_fraction: 1.00000000000000000e+00
+  mean_delta_du_rms: -2.96961640988723345e-02
+  mean_delta_U_overlap: 1.20042836126546912e-01
+
+box_shear_aspect
+  count: 128
+  mean_delta_sum: 0.00000000000000000e+00
+  median_delta_sum: 0.00000000000000000e+00
+  mean_delta_shape: -7.20159178655126880e-07
+  median_delta_shape: 0.00000000000000000e+00
+  success_left_fraction: 1.64062500000000000e-01
+  success_down_fraction: 2.73437500000000000e-01
+  success_diagonal_fraction: 9.37500000000000000e-02
+  mean_delta_du_rms: 0.00000000000000000e+00
+  mean_delta_U_overlap: -1.53910659331317593e-06
+
+compression_step
+  count: 128
+  mean_delta_sum: 2.94469000342373810e-05
+  median_delta_sum: 0.00000000000000000e+00
+  mean_delta_shape: 4.07769751633611571e-05
+  median_delta_shape: 1.38777878078144568e-17
+  success_left_fraction: 4.14062500000000000e-01
+  success_down_fraction: 3.51562500000000000e-01
+  success_diagonal_fraction: 1.25000000000000000e-01
+  mean_delta_du_rms: 8.27637031138275976e-05
+  mean_delta_U_overlap: -1.25170263948268224e-03
+
+free_ricci
+  count: 128
+  mean_delta_sum: -7.38520753150714165e-02
+  median_delta_sum: -7.42443711852548982e-02
+  mean_delta_shape: -3.58261317149619844e-03
+  median_delta_shape: -3.54852062405496688e-03
+  success_left_fraction: 1.00000000000000000e+00
+  success_down_fraction: 1.00000000000000000e+00
+  success_diagonal_fraction: 1.00000000000000000e+00
+  mean_delta_du_rms: -1.46246916377896469e-01
+  mean_delta_U_overlap: 4.04325773647780551e+00
+
+post_voro_surgery
+  count: 128
+  mean_delta_sum: -9.07404200493440102e-03
+  median_delta_sum: -8.86984044553480733e-03
+  mean_delta_shape: 2.86863124720857163e-02
+  median_delta_shape: 2.80320068381612400e-02
+  success_left_fraction: 1.00000000000000000e+00
+  success_down_fraction: 0.00000000000000000e+00
+  success_diagonal_fraction: 0.00000000000000000e+00
+  mean_delta_du_rms: -1.41838736545720420e-02
+  mean_delta_U_overlap: 0.00000000000000000e+00
+
+radius_label_swap
+  count: 128
+  mean_delta_sum: -1.89889570157518580e-05
+  median_delta_sum: 0.00000000000000000e+00
+  mean_delta_shape: -4.09447353528298499e-06
+  median_delta_shape: 0.00000000000000000e+00
+  success_left_fraction: 3.35937500000000000e-01
+  success_down_fraction: 3.75000000000000000e-01
+  success_diagonal_fraction: 2.42187500000000000e-01
+  mean_delta_du_rms: -5.44338358508663842e-05
+  mean_delta_U_overlap: -3.51221361868712760e-06
+
+shape_descent
+  count: 128
+  mean_delta_sum: 1.12362028155867794e-05
+  median_delta_sum: 0.00000000000000000e+00
+  mean_delta_shape: -3.58738308804128258e-05
+  median_delta_shape: -2.24809037500384168e-05
+  success_left_fraction: 1.64062500000000000e-01
+  success_down_fraction: 6.87500000000000000e-01
+  success_diagonal_fraction: 1.32812500000000000e-01
+  mean_delta_du_rms: 6.09169151133219771e-05
+  mean_delta_U_overlap: 4.32953676799951315e-05
+
+rank_by_success_diagonal
+  bounded_ricci_du010: 1.00000000000000000e+00
+  free_ricci: 1.00000000000000000e+00
+  radius_label_swap: 2.42187500000000000e-01
+  shape_descent: 1.32812500000000000e-01
+  compression_step: 1.25000000000000000e-01
+  box_shear_aspect: 9.37500000000000000e-02
+  post_voro_surgery: 0.00000000000000000e+00

@@ -1,0 +1,7 @@
+D_net: 8.75097902147126572e-01
+total_path_length: 2.91671092755044319e-02
+net_displacement: 2.55240761386899238e-02
+zigzag_index: 1.24902097852873428e-01
+sign_reversals_sum: 53
+sign_reversals_shape: 0
+interpretation: directed relaxation
